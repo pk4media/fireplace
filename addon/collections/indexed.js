@@ -188,10 +188,10 @@ export default Collection.extend({
 
     let record;
     if (returnPromise) {
-      record = store.fetchOne(type, item.id, query);
+      record = store.fetchOne(type, get(item, 'id'), query);
       return record.then(resolved => this.wrapRecordInMetaObjectIfNeccessary(resolved, item.snapshot) );
     } else {
-      record = store.findOne(type, item.id, query);
+      record = store.findOne(type, get(item, 'id'), query);
       return this.wrapRecordInMetaObjectIfNeccessary(record, item.snapshot);
     }
   },
